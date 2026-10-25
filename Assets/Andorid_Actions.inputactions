@@ -1,0 +1,48 @@
+{
+    "version": 1,
+    "name": "Andorid_Actions",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "18c5d0c6-dae4-40b5-8a07-38942fc3a25a",
+            "actions": [
+                {
+                    "name": "MainTouch",
+                    "type": "Value",
+                    "id": "be7c6016-03d9-45a2-9d94-0dd4bfede69b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "63a68d4d-f5d6-4ebc-9caa-552cae25dc3b",
+                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Android",
+                    "action": "MainTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Android",
+            "bindingGroup": "Android",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
