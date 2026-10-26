@@ -22,7 +22,7 @@ public class FeedbackHaptics : MonoBehaviour, IEventListener<BombExplodeData>
 
     private void OnDestroy()
     {
-        EventBus.Subscribe<BombExplodeData>(this);
+        EventBus.Unsubscribe<BombExplodeData>(this);
 
     }
 

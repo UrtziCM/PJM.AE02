@@ -20,5 +20,8 @@ public class InputEventDispatcher : MonoBehaviour
     {
         EventBus.Call(new ScreenTappedData(context.ReadValue<Vector2>())); // en esta línea se me ha ido 1 hora
     }
-
+    private void OnDestroy()
+    {
+        mainTouch.performed -= tapMethod;
+    }
 }
