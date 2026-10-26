@@ -1,13 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLifecycleDispatcher : MonoBehaviour, IEventListener<LifeLostData>, IEventListener<PauseStartData>, IEventListener<PauseEndData>
 {
-    
-
-
-
-
 
     public void OnEvent(LifeLostData eventData)
     {
@@ -21,6 +17,7 @@ public class GameLifecycleDispatcher : MonoBehaviour, IEventListener<LifeLostDat
     {
         EventBus.Call(new GameEndData());
         Debug.Log("End game");
+        SceneManager.LoadScene("MainMenu");
 
     }
 
@@ -32,12 +29,20 @@ public class GameLifecycleDispatcher : MonoBehaviour, IEventListener<LifeLostDat
 
     private IEnumerator Start()
     {
-        yield return null; // Esperamos un frame para que pasen todos los Starts de los objetos de la escena antes de empezar a jugar.
-        Debug.Log("Start game");
         EventBus.Subscribe<LifeLostData>(this);
         EventBus.Subscribe<PauseStartData>(this);
         EventBus.Subscribe<PauseEndData>(this);
+        yield return null; // Esperamos un frame para que pasen todos los Starts de los objetos de la escena antes de empezar a jugar.
+        Debug.Log("Start game");
         EventBus.Call(new GameStartData());
+        Time.timeScale = 1.0f;
+    }
+
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<LifeLostData>(this);
+        EventBus.Unsubscribe<PauseStartData>(this);
+        EventBus.Unsubscribe<PauseEndData>(this);
     }
 
     public void OnEvent(PauseStartData eventData)

@@ -22,6 +22,11 @@ public class UILifeHandler : MonoBehaviour, IEventListener<LifeLostData>
         EventBus.Subscribe<LifeLostData>(this);
     }
 
+    private void OnDestroy()
+    {
+        
+        EventBus.Unsubscribe<LifeLostData>(this);
+    }
     private void SetRemainingLifes(int lifes)
     {
         for (int i = 0; i < lifeImages.Length; i++)

@@ -1,4 +1,4 @@
-﻿internal class ScoreChangedData : IEventData
+﻿public class ScoreChangedData : IEventData
 {
     public int oldScore;
     public int score;

@@ -6,7 +6,7 @@ public class UIScoreHandler : MonoBehaviour, IEventListener<ScoreChangedData>
     TextMeshProUGUI scoreText;
 
 
-    void IEventListener<ScoreChangedData>.OnEvent(ScoreChangedData eventData)
+    public void OnEvent(ScoreChangedData eventData)
     {
         scoreText.text = $"Score: {eventData.score}";
     }
@@ -16,6 +16,12 @@ public class UIScoreHandler : MonoBehaviour, IEventListener<ScoreChangedData>
     {
         scoreText = GetComponent<TextMeshProUGUI>();
         EventBus.Subscribe<ScoreChangedData>(this);
+
+    }
+
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<ScoreChangedData>(this);
 
     }
 

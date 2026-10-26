@@ -11,7 +11,6 @@ public class InputEventDispatcher : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         mainTouch = InputSystem.actions.FindAction("MainTouch");
         tapMethod = (InputAction.CallbackContext cc) => Tapped(cc);
         mainTouch.performed += tapMethod;

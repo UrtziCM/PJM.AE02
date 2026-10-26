@@ -30,6 +30,11 @@ public class ShootableSpawnManager : MonoBehaviour , IEventListener<GameStartDat
         EventBus.Subscribe<GameStartData>(this);
     }
 
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<GameStartData>(this);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;

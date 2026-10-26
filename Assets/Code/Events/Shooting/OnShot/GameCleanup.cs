@@ -56,6 +56,12 @@ public class GameCleanup : MonoBehaviour, IEventListener<ShotData>, IEventListen
         StartCoroutine(DestroyBatchBelated());
     }
 
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<ShotData>(this);
+        EventBus.Unsubscribe<ShootableSpawnData>(this);
+    }
+
     private IEnumerator DestroyBatch()
     {
         WaitForSeconds timer = new(5);

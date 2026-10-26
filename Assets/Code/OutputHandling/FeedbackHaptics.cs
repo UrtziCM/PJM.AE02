@@ -20,4 +20,10 @@ public class FeedbackHaptics : MonoBehaviour, IEventListener<BombExplodeData>
         EventBus.Subscribe<BombExplodeData>(this);
     }
 
+    private void OnDestroy()
+    {
+        EventBus.Subscribe<BombExplodeData>(this);
+
+    }
+
 }

@@ -11,6 +11,12 @@ public class ScoreManager : MonoBehaviour, IEventListener<ScoreData>
         EventBus.Subscribe<ScoreData>(this);
     }
 
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<ScoreData>(this);
+
+    }
+
     public void OnEvent(ScoreData eventData)
     {
         AddScore(eventData.score);

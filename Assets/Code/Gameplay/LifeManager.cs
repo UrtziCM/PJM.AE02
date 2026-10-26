@@ -13,4 +13,10 @@ public class LifeManager : MonoBehaviour, IEventListener<BombExplodeData>
         EventBus.Subscribe<BombExplodeData>(this);
     }
 
+    private void OnDestroy()
+    {
+        EventBus.Unsubscribe<BombExplodeData>(this);
+
+    }
+
 }
